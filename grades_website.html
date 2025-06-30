@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UBYS Portal Klon</title>
+  <!-- Font Awesome ikon kütüphanesi -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: Arial, sans-serif; background:#f5f5f5; color:#333; }
+    a { text-decoration:none; color:inherit; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:10px 20px; border-bottom:1px solid #ddd; }
+    .topbar .left, .topbar .right { display:flex; align-items:center; }
+    .fa-bars { font-size:20px; margin-right:20px; cursor:pointer; }
+    .dropdown { margin-right:15px; }
+    .dropdown button { background:none; border:none; font-size:14px; cursor:pointer; display:flex; align-items:center; }
+    .fa-caret-down, .fa-ellipsis-h { margin-left:5px; }
+    .icon-list .fa { font-size:18px; margin-left:15px; cursor:pointer; }
+    .alert { background:#ffe5e5; border:1px solid #ffcccc; padding:15px 20px; margin:20px; border-radius:4px; color:#a94442; line-height:1.6; }
+    .alert strong { font-weight:bold; }
+    .content { display:flex; }
+    .sidebar { width:60px; background:#fff; border-right:1px solid #ddd; padding-top:20px; }
+    .sidebar .fa { display:block; text-align:center; font-size:20px; color:#333; margin-bottom:25px; cursor:pointer; }
+    .main { flex:1; padding:20px; }
+    .semester-select { font-weight:bold; margin-bottom:10px; }
+    .search { text-align:right; margin-bottom:10px; }
+    .search input { padding:6px 10px; width:250px; border:1px solid #ccc; border-radius:4px; }
+    table { width:100%; border-collapse:collapse; background:#fff; }
+    th, td { border:1px solid #ddd; padding:10px; text-align:center; font-size:14px; vertical-align:top; }
+    th { background:#f0f0f0; }
+    tr:nth-child(even) { background:#f9f9f9; }
+    .status-devamli { color:green; font-weight:bold; }
+    .status-devamsiz { color:red; font-weight:bold; }
+    .btn-mazeret { background:#00aaff; color:#fff; padding:4px 8px; border:none; border-radius:3px; font-size:12px; cursor:pointer; }
+    .bottom-btn { display:block; width:220px; margin:20px auto; padding:10px; background:#4CAF50; color:#fff; text-align:center; border-radius:4px; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <i class="fa fa-bars"></i>
+    <div class="left">
+      <div class="dropdown"><button>Akademik Program Seçiniz <i class="fa fa-caret-down"></i></button></div>
+      <div class="dropdown"><button>Transkript <i class="fa fa-caret-down"></i></button></div>
+      <div class="dropdown"><button>Diğer <i class="fa fa-ellipsis-h"></i></button></div>
+    </div>
+    <div class="right icon-list">
+      <i class="fa fa-question-circle"></i>
+      <i class="fa fa-calendar-alt"></i>
+      <i class="fa fa-globe"></i>
+      <i class="fa fa-th"></i>
+      <i class="fa fa-lock"></i>
+    </div>
+  </div>
+  <div class="alert">
+    "<strong>Mazeret Bildir</strong>" butonu, yönetmelikte geçen mazeret şartları ile online sınav sırasında oluşabilecek bir mazeret durumunuzun, değerlendirilmesi ve uygun görülmesi durumunda mazeret sınavına girebilme süreci için aktif hale getirilmiştir. Normal şartlarda sınava katılıp, sorunsuz şekilde sınavı bitiren öğrenciler için "Mazeret Bildir" seçeneği kullanılmamalıdır! Mazeret talebini yapan ve değerlendirme sonucu uygun görülen öğrencilerin girmiş oldukları sınavdan aldıkları not geçersiz sayılacak olup, mazeret sınavı sonrası aldıkları not ilgili sınav notu olarak değerlendirilecektir.
+    <br><br>
+    Belirtilen kapsamda "Mazeret Bildir" seçeneğinin kullanılması gerekmektedir.
+    <br>
+    <strong>Sınav tarihinden itibaren 7 gün içinde mazeret bildirebilirsiniz, sonrasında mazeret bildirimleri kapanacaktır.</strong>
+  </div>
+  <div class="content">
+    <div class="sidebar">
+      <i class="fa fa-home"></i>
+      <i class="fa fa-book"></i>
+      <i class="fa fa-calendar"></i>
+      <i class="fa fa-square-root-alt"></i>
+      <i class="fa fa-sync-alt"></i>
+      <i class="fa fa-cog"></i>
+      <i class="fa fa-share"></i>
+      <i class="fa fa-share-alt"></i>
+    </div>
+    <div class="main">
+      <div class="semester-select">2024 - Bahar - YANO: 0</div>
+      <div class="search"><input type="text" placeholder="Derslerin İçinde Ara..."></div>
+      <table>
+        <thead>
+          <tr>
+            <th>Ders Kodu</th>
+            <th>Ders Adı</th>
+            <th>Kredi</th>
+            <th>AKTS</th>
+            <th>Dersin Koordinatörü</th>
+            <th>Devam Durumu</th>
+            <th>Geçme Notu</th>
+            <th>Başarı Durumu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>IMU012</td>
+            <td>YABANCI DİL II (İNGİLİZCE)</td>
+            <td>2,00</td>
+            <td>2,00</td>
+            <td></td>
+            <td class="status-devamli">Devamlı</td>
+            <td>Vize: 65,00<br>Final: Girmedi<br>Bütünleme: 95,00</td>
+            <td>Başarılı</td>
+          </tr>
+          <tr>
+            <td>IMU022</td>
+            <td>ATATÜRK İLKELERİ VE İNKILAP TARİHİ II</td>
+            <td>2,00</td>
+            <td>2,00</td>
+            <td></td>
+            <td class="status-devamli">Devamlı</td>
+            <td>Vize: 80,00<br>Final: Girmedi<br>Bütünleme: 85,00</td>
+            <td>Başarılı</td>
+          </tr>
+          <tr>
+            <td>IMU032</td>
+            <td>TÜRK DİLİ II</td>
+            <td>2,00</td>
+            <td>2,00</td>
+            <td></td>
+            <td class="status-devamli">Devamlı</td>
+            <td>Vize: 90,00<br>Final: Girmedi<br>Bütünleme: 65,00</td>
+            <td>Başarılı</td>
+          </tr>
+          <tr>
+            <td>IKT108</td>
+            <td>MAKRO İKTİSATIN TEMELLERİ</td>
+            <td>3,00</td>
+            <td>4,00</td>
+            <td></td>
+            <td class="status-devamli">Devamlı</td>
+            <td>Vize: 41,00<br>Final: 20,00<br>Bütünleme: 75,00</td>
+            <td>Başarılı</td>
+          </tr>
+          <tr>
+            <td>İŞL108</td>
+            <td>MUHASEBEYE GİRİŞ</td>
+            <td>3,00</td>
+            <td>4,00</td>
+            <td></td>
+            <td class="status-devamli">Devamlı</td>
+            <td>Vize: 60,00<br>Final: Girmedi<br>Bütünleme: 65,00</td>
+            <td>Başarılı</td>
+          </tr>
+          <tr>
+            <td>ULİ106</td>
+            <td>ULUSLARARASI İLİŞKİLERE GİRİŞ</td>
+            <td>3,00</td>
+            <td>4,00</td>
+            <td></td>
+            <td class="status-devamli">Devamlı</td>
+            <td>Vize: 40,00<br>Final: Girmedi<br>Bütünleme: 80,00</td>
+            <td>Başarılı</td>
+          </tr>
+          <tr>
+            <td>SBK102</td>
+            <td>ANAYASA HUKUKU</td>
+            <td>3,00</td>
+            <td>4,00</td>
+            <td></td>
+            <td class="status-devamli">Devamlı</td>
+            <td>Vize: 55,00<br>Final: Girmedi<br>Bütünleme: 30,00</td>
+            <td>Başarısız</td>
+          </tr>
+          <tr>
+            <td>MAT171</td>
+            <td>İŞLETME VE İKTİSAT İÇİN MATEMATİK</td>
+            <td>3,00</td>
+            <td>4,00</td>
+            <td></td>
+            <td class="status-devamli">Devamlı</td>
+            <td>Vize: 50,00<br>Final: 55,00<br>Bütünleme: -</td>
+            <td>Başarılı</td>
+          </tr>
+          <tr>
+            <td>SOS101</td>
+            <td>SOSYOLOJİ</td>
+            <td>3,00</td>
+            <td>4,00</td>
+            <td></td>
+            <td class="status-devamli">Devamlı</td>
+            <td>Vize: 80,00<br>Final: Girmedi<br>Bütünleme: 45,00</td>
+            <td>Başarısız</td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="#" class="bottom-btn">Geçmiş Dönem Derslerini Göster</a>
+    </div>
+  </div>
+</body>
+</html>
